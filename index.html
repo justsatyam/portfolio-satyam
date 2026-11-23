@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Satyam Kadam | IT Hardware & Network Specialist</title>
+  <meta name="description" content="Portfolio of Satyam Kadam — Practical IT support professional focused on hardware maintenance, network setup, CCTV and biometric installation, Windows troubleshooting, and computer assembly." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            notebookBg: '#F4F4F0',
+            notebookPaper: '#FFFFFF',
+            tapeYellow: '#FEE440',
+            tapeGreen: '#A7F3D0',
+            tapePink: '#FBCFE8',
+            tapeBlue: '#BAE6FD',
+            inkBlack: '#18181B',
+            inkMuted: '#52525B',
+          },
+          fontFamily: {
+            hand: ['"Caveat"', 'cursive'],
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Caveat (Handwritten), Plus Jakarta Sans, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Engineering / Graph Paper Background */
+    .paper-grid-bg {
+      background-color: #F4F4F0;
+      background-image: 
+        linear-gradient(#E2E2D8 1px, transparent 1px),
+        linear-gradient(90deg, #E2E2D8 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Inner Notebook Sheet Grid */
+    .sheet-grid-bg {
+      background-color: #FFFFFF;
+      background-image: 
+        linear-gradient(#F2F2EC 1px, transparent 1px),
+        linear-gradient(90deg, #F2F2EC 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Yellow Highlighter / Sticky Tape Label */
+    .tape-label {
+      display: inline-block;
+      background-color: #FEE440;
+      color: #111827;
+      font-family: 'Caveat', cursive;
+      font-size: 1.85rem;
+      line-height: 1.15;
+      font-weight: 700;
+      padding: 0.25rem 1.15rem;
+      border-radius: 4px;
+      box-shadow: 2px 3px 0px rgba(0, 0, 0, 0.14);
+      transform: rotate(-1.5deg);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .tape-label-sm {
+      display: inline-block;
+      background-color: #FEE440;
+      color: #111827;
+      font-family: 'Caveat', cursive;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      font-weight: 700;
+      padding: 0.15rem 0.75rem;
+      border-radius: 3px;
+      box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.12);
+      transform: rotate(1deg);
+    }
+
+    /* Frosted Scotch / Washi Tape for Photos & Cards */
+    .scotch-tape-corner {
+      position: absolute;
+      width: 65px;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(210, 210, 210, 0.7);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+      z-index: 25;
+      pointer-events: none;
+    }
+
+    /* White Sticker Cutout Style */
+    .sticker-photo {
+      border: 5px solid #FFFFFF;
+      box-shadow: 0 12px 25px -4px rgba(0, 0, 0, 0.18), 0 4px 6px -2px rgba(0, 0, 0, 0.08);
+      border-radius: 1.5rem;
+      transition: transform 0.2s ease;
+    }
+    .sticker-photo:hover {
+      transform: scale(1.02) rotate(1deg);
+    }
+
+    /* Polaroid Photo Frame */
+    .polaroid-frame {
+      background: #FFFFFF;
+      padding: 10px 10px 22px 10px;
+      border-radius: 4px;
+      border: 1px solid #E5E7EB;
+      box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.12);
+      transform: rotate(2deg);
+      transition: transform 0.25s ease;
+    }
+    .polaroid-frame:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 5px 8px 18px rgba(0, 0, 0, 0.16);
+    }
+
+    /* Neo-brutalist Notebook Sheet Border & Shadow */
+    .notebook-sheet-card {
+      box-shadow: 8px 10px 0px #18181B;
+      border: 2px solid #18181B;
+    }
+    @media (min-width: 768px) {
+      .notebook-sheet-card {
+        box-shadow: 12px 14px 0px #18181B;
+        border: 2.5px solid #18181B;
+      }
+    }
+
+    /* 3D Cube Slide Animation Engine Styles */
+    .cube-track {
+      transform-style: preserve-3d;
+      perspective: 1200px;
+      perspective-origin: 50% 50%;
+    }
+    .slide-item {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+      box-sizing: border-box;
+    }
+
+    /* LED blink */
+    @keyframes ledPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+    .led-green {
+      animation: ledPulse 2s ease-in-out infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F4F4F0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+  </style>
+</head>
+<body class="paper-grid-bg text-inkBlack min-h-screen py-4 md:py-8 px-3 sm:px-4 md:px-6 font-sans antialiased selection:bg-[#FEE440] selection:text-black">
+
+  <!-- ==================== MAIN NOTEBOOK SHEET CONTAINER ==================== -->
+  <main class="max-w-5xl mx-auto bg-white notebook-sheet-card rounded-[2rem] md:rounded-[2.5rem] overflow-hidden relative">
+
+    <!-- Top Navigation Sticker Tabs Bar -->
+    <header class="border-b-2 border-inkBlack bg-[#FAF9F5] px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Left: Logo & Brand Tab -->
+      <div class="flex items-center gap-2">
+        <a href="#hero" class="bg-[#FEE440] hover:bg-[#FDD835] text-black font-bold px-3 py-1 rounded-md border border-black/30 shadow-[1px_2px_0px_#18181B] flex items-center gap-1.5 text-sm transition-transform active:scale-95">
+          <span>★</span>
+          <span class="font-mono tracking-tight">SATYAM.IT</span>
+        </a>
+        <span class="text-xs text-inkMuted font-mono hidden sm:inline-block">/ Field Portfolio</span>
+      </div>
+
+      <!-- Right: Navigation Pills -->
+      <nav class="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium">
+        <a href="#about" class="px-2.5 py-1 rounded hover:bg-slate-200/70 text-slate-800 transition">About</a>
+        <a href="#skills" class="px-2.5 py-1 rounded hover:bg-slate-200/70 text-slate-800 transition">Skills</a>
+                <a href="#contact" class="px-2.5 py-1 rounded bg-[#A7F3D0] hover:bg-[#86EFAC] text-emerald-950 font-bold border border-emerald-900/30 shadow-[1px_1px_0px_#18181B] transition">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Notebook Content Sheet Body -->
+    <div class="sheet-grid-bg p-5 sm:p-8 md:p-12 relative">
+
+      <!-- ==================== TOP HERO SECTION ==================== -->
+      <section id="hero" class="pb-10 border-b-2 border-slate-200 relative">
+        
+        <!-- Hero Content: Name & Title & Badges -->
+        <div class="max-w-2xl space-y-4">
+          <!-- Hand-drawn Annotation: "my name is" -->
+          <div class="flex items-center gap-2">
+            <span class="font-hand text-2xl text-slate-600 tracking-wide">my name is</span>
+            <!-- Hand-drawn SVG doodle underline -->
+            <svg class="w-16 h-4 text-slate-500" viewBox="0 0 65 14" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 10C15 3 45 4 63 9M18 12C28 10 40 10 50 12" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <!-- Main Big Name: Satyam Kadam -->
+          <div class="relative">
+            <h1 class="font-hand text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight text-inkBlack leading-[0.88] select-none">
+              Satyam<br/>Kadam
+            </h1>
+          </div>
+
+          <!-- Subtitle / Role Tag -->
+          <div class="pt-1">
+            <p class="font-mono text-sm sm:text-base text-slate-700 font-semibold tracking-wide flex items-center gap-2">
+              <span class="text-amber-500 font-bold">●</span>
+              <span>Practical IT Support & Hardware Specialist</span>
+              <span class="text-amber-500 font-bold">●</span>
+            </p>
+          </div>
+
+          <!-- Sticky Tape Chips -->
+          <div class="flex flex-wrap gap-2 pt-1 font-mono text-xs">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#FEE440] text-slate-900 font-bold shadow-[1px_2px_0px_#18181B] border border-black/20 rotate-[-1deg]">
+              <span>🛠️</span>
+              <span>Hardware & Networks</span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#A7F3D0] text-emerald-950 font-bold shadow-[1px_2px_0px_#18181B] border border-emerald-950/20 rotate-[1deg]">
+              <span>📍</span>
+              <span>Mumbai MMR (On-Site)</span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#BAE6FD] text-sky-950 font-bold shadow-[1px_2px_0px_#18181B] border border-sky-950/20 rotate-[-0.5deg]">
+              <span>⚡</span>
+              <span>Same-Day Resolution</span>
+            </span>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="pt-3 flex flex-wrap items-center gap-3">
+            <button onclick="copyEmail()" class="inline-flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-slate-50 text-slate-900 font-bold rounded-xl shadow-[3px_4px_0px_#18181B] border-2 border-inkBlack transition active:translate-y-0.5 text-sm">
+              <span>✉️</span>
+              <span id="heroEmailBtn">satyamkadam723@gmail.com</span>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================== ABOUT ME & CORE SKILLS SECTION (2-COL) ==================== -->
+      <section id="about" class="py-10 border-b-2 border-slate-200 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10">
+        
+        <!-- Left: Personal Bio (About Me) -->
+        <div class="md:col-span-6 space-y-4">
+          <!-- Section Title with Yellow Tape -->
+          <div>
+            <span class="tape-label">Personal Bio</span>
+          </div>
+
+          <!-- Exact Bio Provided by User -->
+          <div class="p-5 bg-white rounded-2xl border-2 border-slate-200 shadow-sm relative space-y-3">
+            <!-- Washi tape at top left -->
+            <div class="scotch-tape-corner -top-2.5 left-4 rotate-[-3deg]"></div>
+            
+            <p class="text-slate-800 text-base sm:text-lg leading-relaxed font-sans">
+              Practical IT support professional focused on hardware maintenance, network setup, and reliable end-user troubleshooting. Skilled in CCTV and biometric installation, Windows installation and troubleshooting, router and switch configuration, and computer assembly, with a hands-on approach to resolving day-to-day technical issues.
+            </p>
+
+            <div class="pt-2 flex items-center gap-2 text-xs font-mono text-slate-600">
+              <span class="text-amber-500 font-bold">✔</span>
+              <span>100% Hands-on physical troubleshooting & configuration</span>
+            </div>
+          </div>
+
+          <!-- Doodle Arrow pointing to Skills on mobile -->
+          <div class="flex items-center gap-2 pt-1 text-slate-500 font-hand text-xl">
+            <span>what I work with</span>
+            <svg class="w-8 h-8 text-slate-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Right: Core Skills (The 8 Exact User Skills) -->
+        <div id="skills" class="md:col-span-6 space-y-4">
+          <!-- Section Title with Yellow Tape & Hand-drawn Arrow -->
+          <div class="flex items-center gap-3">
+            <span class="tape-label" style="transform: rotate(1deg);">Core Skills</span>
+            <!-- Hand-drawn curvy arrow pointing down -->
+            <svg class="w-10 h-10 text-slate-700" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M6 8C16 8 28 14 26 28M26 28L20 22M26 28L32 22" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+
+          <!-- 8 Skills Bulleted Notebook List -->
+          <div class="bg-white rounded-2xl border-2 border-slate-200 p-5 shadow-sm space-y-2.5">
+            
+            <!-- Skill 1 -->
+            <div class="flex items-center gap-3 text-slate-800 font-medium text-sm sm:text-base hover:text-black transition">
+              <span class="w-5 h-5 rounded-full bg-[#FEE440] border border-black/40 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+              <span>Hardware troubleshooting</span>
+            </div>
+
+            <!-- Skill 2 -->
+            <div class="flex items-center gap-3 text-slate-800 font-medium text-sm sm:text-base hover:text-black transition">
+              <span class="w-5 h-5 rounded-full bg-[#A7F3D0] border border-emerald-900/40 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+              <span>Networking installation</span>
+            </div>
+
+            <!-- Skill 3 -->
+            <div class="flex items-center gap-3 text-slate-800 font-medium text-sm sm:text-base hover:text-black transition">
+              <span class="w-5 h-5 rounded-full bg-[#BAE6FD] border border-sky-900/40 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+              <span>CCTV installation</span>
+            </div>
+
+            <!-- Skill 4 -->
+            <div class="flex items-center gap-3 text-slate-800 font-medium text-sm sm:text-base hover:text-black transition">
+              <span class="w-5 h-5 rounded-full bg-[#FBCFE8] border border-pink-900/40 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+              <span>Biometric installation</span>
+            </div>
+
+            <!-- Skill 5 -->
+            <div class="flex items-center gap-3 text-slate-800 font-medium text-sm sm:text-base hover:text-black transition">
+              <span class="w-5 h-5 rounded-full bg-[#FEE440] border border-black/40 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+              <span>Windows installation and troubleshooting</span>
+            </div>
+
+            <!-- Skill 6 -->
+            <div class="flex items-center gap-3 text-slate-800 font-medium text-sm sm:text-base hover:text-black transition">
+              <span class="w-5 h-5 rounded-full bg-[#A7F3D0] border border-emerald-900/40 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+              <span>Router and switch configuration</span>
+            </div>
+
+            <!-- Skill 7 -->
+            <div class="flex items-center gap-3 text-slate-800 font-medium text-sm sm:text-base hover:text-black transition">
+              <span class="w-5 h-5 rounded-full bg-[#BAE6FD] border border-sky-900/40 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+              <span>Computer assembly</span>
+            </div>
+
+            <!-- Skill 8 -->
+            <div class="flex items-center gap-3 text-slate-800 font-medium text-sm sm:text-base hover:text-black transition">
+              <span class="w-5 h-5 rounded-full bg-[#FBCFE8] border border-pink-900/40 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+              <span>End-user technical support</span>
+            </div>
+
+          </div>
+
+          <!-- Small Hardware & Tools Tape Badges -->
+          <div class="flex flex-wrap items-center gap-1.5 pt-1 text-xs font-mono text-slate-700">
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-300">Hikvision NVR</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-300">eSSL Access Control</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-300">Cisco / TP-Link</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-300">Windows Server</span>
+            <span class="px-2 py-0.5 rounded bg-slate-100 border border-slate-300">Cat6 Crimping & Testing</span>
+          </div>
+        </div>
+
+      </section>
+      <!-- ==================== CONTACT ME SECTION ==================== -->
+      <section id="contact" class="pt-10 pb-4 space-y-6">
+        
+        <!-- Title with Yellow Tape & Hand-drawn arrow -->
+        <div class="flex items-center gap-3">
+          <span class="tape-label" style="transform: rotate(-1deg);">Contact me!</span>
+          <!-- Hand-drawn curly flourish / doodle -->
+          <svg class="w-16 h-8 text-slate-800" viewBox="0 0 64 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12C16 4 28 20 40 12C48 6 56 16 60 12" stroke-linecap="round" />
+            <path d="M54 8L60 12L56 18" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+
+        <!-- Contact Box styled as a Notebook Note Card with Scotch Tape -->
+        <div class="relative bg-white rounded-2xl border-2 border-inkBlack p-6 sm:p-8 shadow-[6px_8px_0px_#18181B] max-w-2xl">
+          <!-- Frosted Scotch tape on top corner -->
+          <div class="scotch-tape-corner -top-3 right-8 rotate-[5deg]"></div>
+
+          <div class="space-y-4">
+            <p class="font-hand text-2xl sm:text-3xl font-bold text-slate-900 leading-snug">
+              Need reliable on-site IT support, CCTV/biometric setup, or network troubleshooting?
+            </p>
+
+            <p class="text-sm sm:text-base text-slate-700 font-sans">
+              Available for deployments, hardware maintenance, network infrastructure setups, and on-site troubleshooting across Mumbai.
+            </p>
+
+            <!-- Contact Details -->
+            <div class="pt-2 space-y-3 font-mono text-sm">
+              <!-- Email Row -->
+              <div class="flex flex-wrap items-center justify-between gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <div class="flex items-center gap-2.5">
+                  <span class="text-lg">✉️</span>
+                  <span id="emailText" class="font-bold text-slate-900 text-xs sm:text-sm">satyamkadam723@gmail.com</span>
+                </div>
+                <button onclick="copyEmail()" class="px-3 py-1.5 bg-[#FEE440] hover:bg-[#FDD835] text-black font-bold text-xs rounded-lg border border-black/30 shadow-[1px_2px_0px_#18181B] active:scale-95 transition">
+                  Copy Email
+                </button>
+              </div>
+
+              <!-- Location Row -->
+              <div class="flex items-center gap-2.5 text-xs sm:text-sm text-slate-700 pt-1">
+                <span class="text-lg">📍</span>
+                <span><strong>Coverage Area:</strong> Mumbai MMR (Western, Central & Harbour Lines)</span>
+              </div>
+            </div>
+
+            <!-- Quick Action Button -->
+            <div class="pt-3">
+              <a href="mailto:satyamkadam723@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 bg-inkBlack hover:bg-slate-800 text-white font-bold rounded-xl shadow-[3px_4px_0px_#FEE440] border-2 border-inkBlack transition active:translate-y-0.5 text-sm">
+                <span>Send Direct Email</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Bottom Note -->
+        <div class="pt-6 border-t border-slate-200 flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-500">
+          <p>© 2026 Satyam Kadam • Practical IT Support & Hardware Specialist</p>
+          <p class="font-hand text-base text-slate-600">Built for reliable on-site IT operations ⚡</p>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-inkBlack text-white px-4 py-2.5 rounded-xl border-2 border-[#FEE440] shadow-2xl font-mono text-xs opacity-0 pointer-events-none translate-y-4 transition-all duration-300 flex items-center gap-2">
+    <span>✉️</span>
+    <span id="toastMsg">Email copied to clipboard!</span>
+  </div>
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    // 3D Cube Slide Animation Engine
+    function initProjectCubeSliders() {
+      document.querySelectorAll('.project-card-slider').forEach(slider => {
+        const track = slider.querySelector('.slider-track');
+        const slides = Array.from(slider.querySelectorAll('.slide-item'));
+        const prevBtn = slider.querySelector('.slider-prev');
+        const nextBtn = slider.querySelector('.slider-next');
+        const dots = Array.from(slider.querySelectorAll('.slider-dot'));
+        const counter = slider.querySelector('.slide-counter');
+        const total = slides.length;
+        if (!track || total === 0) return;
+
+        let current = 0;
+        let isAnimating = false;
+        let width = slider.offsetWidth || 300;
+        let halfWidth = width / 2;
+
+        // Ensure 3D lighting/shadow layer on each cube face
+        const shadows = slides.map(slide => {
+          let shadow = slide.querySelector('.cube-shadow');
+          if (!shadow) {
+            shadow = document.createElement('div');
+            shadow.className = 'cube-shadow absolute inset-0 pointer-events-none bg-black transition-opacity duration-500 rounded-3xl z-10';
+            shadow.style.opacity = '0';
+            slide.appendChild(shadow);
+          }
+          return shadow;
+        });
+
+        function updateMetrics() {
+          width = slider.offsetWidth || 300;
+          halfWidth = width / 2;
+        }
+
+        // Layout 3D Cube Faces
+        function setupFaces() {
+          updateMetrics();
+          const nextIdx = (current + 1) % total;
+          const prevIdx = (current - 1 + total) % total;
+
+          slides.forEach((slide, i) => {
+            slide.style.transition = 'none';
+            if (i === current) {
+              slide.style.display = 'flex';
+              slide.style.transform = `rotateY(0deg) translateZ(${halfWidth}px)`;
+              slide.style.zIndex = '5';
+              if (shadows[i]) shadows[i].style.opacity = '0';
+            } else if (i === nextIdx) {
+              slide.style.display = 'flex';
+              slide.style.transform = `rotateY(90deg) translateZ(${halfWidth}px)`;
+              slide.style.zIndex = '4';
+              if (shadows[i]) shadows[i].style.opacity = '0.7';
+            } else if (i === prevIdx) {
+              slide.style.display = 'flex';
+              slide.style.transform = `rotateY(-90deg) translateZ(${halfWidth}px)`;
+              slide.style.zIndex = '4';
+              if (shadows[i]) shadows[i].style.opacity = '0.7';
+            } else {
+              slide.style.display = 'none';
+              slide.style.transform = `rotateY(180deg) translateZ(${halfWidth}px)`;
+              slide.style.zIndex = '1';
+              if (shadows[i]) shadows[i].style.opacity = '1';
+            }
+          });
+
+          // Update Dots
+          dots.forEach((dot, idx) => {
+            if (idx === current) {
+              dot.classList.add('bg-[#CCFF00]', 'scale-125');
+              dot.classList.remove('bg-white/40');
+            } else {
+              dot.classList.remove('bg-[#CCFF00]', 'scale-125');
+              dot.classList.add('bg-white/40');
+            }
+          });
+
+          // Update Counter
+          if (counter) {
+            counter.textContent = current + 1;
+          }
+        }
+
+        function rotateCube(direction) {
+          if (isAnimating) return;
+          isAnimating = true;
+          updateMetrics();
+
+          const outgoing = current;
+          const incoming = direction === 'next'
+            ? (current + 1) % total
+            : (current - 1 + total) % total;
+
+          slides[outgoing].style.display = 'flex';
+          slides[incoming].style.display = 'flex';
+
+          slides[outgoing].style.transition = 'none';
+          slides[incoming].style.transition = 'none';
+
+          if (direction === 'next') {
+            slides[outgoing].style.transform = `rotateY(0deg) translateZ(${halfWidth}px)`;
+            slides[incoming].style.transform = `rotateY(90deg) translateZ(${halfWidth}px)`;
+            if (shadows[outgoing]) shadows[outgoing].style.opacity = '0';
+            if (shadows[incoming]) shadows[incoming].style.opacity = '0.7';
+          } else {
+            slides[outgoing].style.transform = `rotateY(0deg) translateZ(${halfWidth}px)`;
+            slides[incoming].style.transform = `rotateY(-90deg) translateZ(${halfWidth}px)`;
+            if (shadows[outgoing]) shadows[outgoing].style.opacity = '0';
+            if (shadows[incoming]) shadows[incoming].style.opacity = '0.7';
+          }
+
+          void slider.offsetWidth; // Force Reflow
+
+          const transitionStyle = 'transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1)';
+          slides[outgoing].style.transition = transitionStyle;
+          slides[incoming].style.transition = transitionStyle;
+
+          if (direction === 'next') {
+            slides[outgoing].style.transform = `rotateY(-90deg) translateZ(${halfWidth}px)`;
+            slides[incoming].style.transform = `rotateY(0deg) translateZ(${halfWidth}px)`;
+            if (shadows[outgoing]) shadows[outgoing].style.opacity = '0.7';
+            if (shadows[incoming]) shadows[incoming].style.opacity = '0';
+          } else {
+            slides[outgoing].style.transform = `rotateY(90deg) translateZ(${halfWidth}px)`;
+            slides[incoming].style.transform = `rotateY(0deg) translateZ(${halfWidth}px)`;
+            if (shadows[outgoing]) shadows[outgoing].style.opacity = '0.7';
+            if (shadows[incoming]) shadows[incoming].style.opacity = '0';
+          }
+
+          current = incoming;
+
+          dots.forEach((dot, idx) => {
+            if (idx === current) {
+              dot.classList.add('bg-[#CCFF00]', 'scale-125');
+              dot.classList.remove('bg-white/40');
+            } else {
+              dot.classList.remove('bg-[#CCFF00]', 'scale-125');
+              dot.classList.add('bg-white/40');
+            }
+          });
+
+          if (counter) {
+            counter.textContent = current + 1;
+          }
+
+          setTimeout(() => {
+            setupFaces();
+            isAnimating = false;
+          }, 460);
+        }
+
+        // Controls
+        if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); rotateCube('next'); });
+        if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); rotateCube('prev'); });
+
+        dots.forEach((dot, idx) => {
+          dot.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (idx === current || isAnimating) return;
+            rotateCube(idx > current ? 'next' : 'prev');
+          });
+        });
+
+        // Touch & Drag Support
+        let startX = 0;
+        let isTouching = false;
+        slider.addEventListener('touchstart', e => {
+          startX = e.touches[0].clientX;
+          isTouching = true;
+        }, { passive: true });
+
+        slider.addEventListener('touchend', e => {
+          if (!isTouching) return;
+          isTouching = false;
+          const diffX = e.changedTouches[0].clientX - startX;
+          if (Math.abs(diffX) > 40) {
+            rotateCube(diffX < 0 ? 'next' : 'prev');
+          }
+        });
+
+        // Mouse Drag Support
+        let isMouseDown = false;
+        slider.addEventListener('mousedown', e => {
+          isMouseDown = true;
+          startX = e.clientX;
+        });
+        slider.addEventListener('mouseup', e => {
+          if (!isMouseDown) return;
+          isMouseDown = false;
+          const diffX = e.clientX - startX;
+          if (Math.abs(diffX) > 40) {
+            rotateCube(diffX < 0 ? 'next' : 'prev');
+          }
+        });
+        slider.addEventListener('mouseleave', () => { isMouseDown = false; });
+
+        window.addEventListener('resize', setupFaces);
+        setupFaces();
+      });
+    }
+
+    // Project Details for Modal
+    const projectDetails = {
+      ideasquare: {
+        category: "CCTV & Biometric Access",
+        title: "Idea Square Commercial Building (Andheri)",
+        challenge: "A 4-story commercial building in Andheri required complete perimeter surveillance, multi-floor access control, and centralized biometric attendance for 60+ tenant staff.",
+        tech: [
+          "Installed 8 IP dome and bullet cameras with Hikvision 8-channel PoE NVR and 4TB surveillance HDD.",
+          "Fitted eSSL biometric fingerprint and RFID attendance reader integrated with HRMS software over LAN.",
+          "Mounted 600 lbs electromagnetic door locks (EM Locks) on main glass double doors with push-to-exit buttons and emergency break-glass units.",
+          "Ran 400+ meters of Cat6 structured solid copper cabling in secure PVC casing with battery-backed UPS."
+        ],
+        result: "Full premises secured with 30-day recorded video retention, 100% accurate shift punch logs, and seamless keycard/fingerprint access."
+      },
+      apex: {
+        category: "Hospital Network Rack & CCTV",
+        title: "Apex Multispecialty Hospital (Borivali)",
+        challenge: "Critical healthcare facility required 24/7 uptime for patient monitoring, IP surveillance across corridors and OT areas, and isolated staff/patient network subnets.",
+        tech: [
+          "Configured TP-Link Omada Dual-WAN Load Balancing Router with automatic 4G LTE failover to ensure 0% network downtime.",
+          "Installed 16 Hikvision Full HD Night-Vision IP cameras across ICU corridors, reception, pharmacy, and emergency zones.",
+          "Terminated and cable-managed 48 Cat6 Ethernet ports into a 9U wall-mount ventilated server rack with numbered patch panels.",
+          "Deployed biometric attendance readers across administrative and doctor sign-in stations."
+        ],
+        result: "Zero unscheduled downtime achieved, reliable 1080p surveillance with remote live monitoring, and clean organized server rack."
+      },
+      studiopixel: {
+        category: "10G Network & Custom PC Build",
+        title: "Studio Pixel Post-Production (Bandra)",
+        challenge: "Creative media agency handling 4K video editing struggled with slow file transfers from storage servers and frequent workstation thermal throttling.",
+        tech: [
+          "Assembled 6 custom video editing workstations with Intel Core i7-14700K processors, RTX 4070 Ti GPUs, and dual-chamber liquid cooling.",
+          "Installed 10G SFP+ PCI-e network cards and configured a 10Gbps managed switch for instant 4K multi-stream NAS playback.",
+          "Configured clean Windows 11 Pro workstation installations with optimized swap files, color-accurate GPU drivers, and peripheral calibration.",
+          "Implemented local mapped network drives with automated daily scheduled backup scripts."
+        ],
+        result: "Video transfer speeds increased from 90 MB/s to 950 MB/s, slashing render export and file transfer waiting times by 80%."
+      },
+      metrologistics: {
+        category: "Warehouse Wi-Fi & 32-CH NVR",
+        title: "Metro Logistics Hub (Bhiwandi)",
+        challenge: "A 25,000 sq. ft. warehousing facility experienced Wi-Fi dead zones for barcode inventory scanners and required comprehensive loading dock surveillance.",
+        tech: [
+          "Deployed 6 long-range enterprise ceiling Access Points with unified SSID and seamless 802.11r roaming across all warehouse aisles.",
+          "Installed 32-channel Hikvision 4K NVR with dual 8TB enterprise drives and external PTZ zoom cameras covering loading bays.",
+          "Configured port forwarding, DDNS, and mobile app live streaming for remote warehouse monitoring by head office.",
+          "Conducted complete Wi-Fi signal heatmap testing to ensure >-65 dBm coverage across entire storage racking."
+        ],
+        result: "Continuous warehouse Wi-Fi coverage with zero scanner disconnections, and full HD security coverage across all bay doors."
+      }
+    };
+
+    function openProjectModal(key) {
+      const data = projectDetails[key];
+      if (!data) return;
+
+      document.getElementById('modalCategory').textContent = data.category;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalChallenge').textContent = data.challenge;
+      document.getElementById('modalResult').textContent = data.result;
+
+      const listEl = document.getElementById('modalTechList');
+      listEl.innerHTML = '';
+      data.tech.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        listEl.appendChild(li);
+      });
+
+      const modal = document.getElementById('projectModal');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+      }, 10);
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
+
+    function copyEmail() {
+      const email = 'satyamkadam723@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        showToast("Email copied to clipboard! ✉️");
+      }).catch(() => {
+        showToast("satyamkadam723@gmail.com");
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      if (toastMsg) toastMsg.textContent = msg;
+      toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 2500);
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeProjectModal();
+    });
+
+    // Initialize on page load
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      initProjectCubeSliders();
+    } else {
+      document.addEventListener('DOMContentLoaded', initProjectCubeSliders);
+    }
+  </script>
+</body>
+</html>
